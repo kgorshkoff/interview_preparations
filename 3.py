@@ -9,5 +9,16 @@
 import random
 
 
-def create_random(start, stop):
-    random.randint(1, 10)
+def generate_random(start, stop):
+    result_list = []
+    result_dict = {}
+
+    for i in range(10):
+        new_random = int((stop - start) * random.random() + start)
+        result_list.append(new_random)
+        result_dict.update({f'elem_{new_random}': new_random})
+
+    print(result_list, result_dict)
+
+
+generate_random(23, 122)

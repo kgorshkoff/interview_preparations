@@ -9,8 +9,29 @@
 """
 
 
-# Не совсем понимаю, каким образом начисляются проценты по вкладу и по дополнительным депозитам.
+products = [
+    {'begin_sum': 1000, 'end_sum': 9999, 6: 0.05, 12: 0.06, 24: 0.05},
+    {'begin_sum': 10000, 'end_sum': 99999, 6: 0.06, 12: 0.07, 24: 0.065},
+    {'begin_sum': 100000, 'end_sum': 999999, 6: 0.07, 12: 0.08, 24: 0.075}
+]
+
+
+def deposit_calc(amount, period, deposit):
+    for product in products:
+        if amount < product['end_sum']:
+            period_range = range(period)
+            for month in range(period):
+                amount += amount * (product[period] / 12)
+
+                if month != period_range.start or month != period_range.stop:
+                    amount += deposit + deposit * (product[period] / 12)
+
+            return print(round(amount, 2))
+
+
+deposit_calc(10000, 24, 100)
 #
-# Как я это понимаю - проценты начисляются на конец каждого месяца, учитывая финальную сумму на счету.
-#
-# Но если высчитывать сумму с процентами для дополнительных депозитов, то ведь получится совсем другое число, которое мало как связано с общей суммой.
+# Примечание: используем функциональный подход (не ООП)
+# Пример: 10 тыс на 24 мес, пополнение - по 100
+# chargable_deposit(10000, 24, 100)
+# к концу срока: 13739.36

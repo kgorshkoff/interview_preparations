@@ -30,4 +30,4 @@ def deposit_calc(amount, period):
             return print(round(amount, 2))
 
 
-deposit_calc(15000, 12)
+deposit_calc(10000, 24)

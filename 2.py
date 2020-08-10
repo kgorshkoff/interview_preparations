@@ -18,7 +18,7 @@ def print_directory_contents(path):
         if os.path.isdir(current_path):
             print_directory_contents(current_path)
 
-        print(current_path)
+        print(path, arr)
 
 
 print_directory_contents('/Users/kirill/Downloads')

@@ -39,10 +39,10 @@ def generator(file_name):
         file.write(f'{i[0]} {i[1]}\n')
 
     file.close()
-    reader(os.open(file_name, os.O_RDONLY))
+    regexp_writer(os.open(file_name, os.O_RDONLY))
 
 
-def reader(file_descriptor):
+def regexp_writer(file_descriptor):
     file = os.fdopen(file_descriptor, 'r')
     with open('new_test.txt', 'w') as nf:
         for line in file:

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="{% url 'add' %}" method="post">
+    {% csrf_token %}
+
+    <div class="container">
+    <h2 class="mt-4">Добавить продукт</h2>
+        <div class="row mb-3">
+            <div class="col-md-12 themed-grid-col">{{ form }}</div>
+            <div class="col-md-4"><input class="btn btn-primary" type="submit"></div>
+        </div>
+    </div>
+
+</form>
+{% endblock content %}

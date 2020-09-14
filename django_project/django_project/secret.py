@@ -1,0 +1,1 @@
+SECRET = '%qwq#gg3u8bf@vf)-t+1%r84jw_!*0)dh!h7b()m7%@2e9mg=c'

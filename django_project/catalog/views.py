@@ -1,5 +1,6 @@
+from django.template.loader import render_to_string
 from django.views.generic.list import ListView
-from django.views.generic.edit import FormView, CreateView
+from django.views.generic.edit import FormView, CreateView, UpdateView
 from catalog.models import ProductItem
 from catalog.forms import ProductForm
 
@@ -19,6 +20,11 @@ class ProductsAddView(CreateView):
     template_name = 'form.html'
 
     success_url = '/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_html'] = render_to_string(self.template_name, {'form': self.form_class}, request=self.request)
+        return context
 
     def form_valid(self, form):
         form.save()

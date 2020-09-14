@@ -1,0 +1,12 @@
+<tr>
+    <th>Название</th>
+    <th>Поставщик</th>
+    <th>Цена</th>
+</tr>
+{% for obj in object_list %}
+<tr>
+    <td>{{ obj.title }}</td>
+    <td>{{ obj.vendor }}</td>
+    <td>{{ obj.price }}</td>
+</tr>
+{% endfor %}

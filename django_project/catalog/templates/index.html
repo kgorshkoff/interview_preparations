@@ -2,20 +2,34 @@
 
 {% block content %}
     <div class="container">
-    <h2 class="mt-4">Каталог товаров</h2>
-        <div class="row mb-3">
-            <div class="col-md-4 themed-grid-col"><strong>Название</strong></div>
-            <div class="col-md-4 themed-grid-col"><strong>Поставщик</strong></div>
-            <div class="col-md-4 themed-grid-col"><strong>Цена</strong></div>
-            {% for obj in object_list %}
-                <div class="col-md-4 themed-grid-col">{{ obj.title }}</div>
-                <div class="col-md-4 themed-grid-col">{{ obj.vendor }}</div>
-                <div class="col-md-4 themed-grid-col">{{ obj.price }}</div>
-            {% endfor %}
+        <h2>Каталог товаров</h2>
+        <table class="table">
+            {% include "list.html" %}
+        </table>
+
+        <button type="button btn-success" class="btn btn-primary" data-toggle="modal" data-target="#modal">Добавить
+        </button>
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="label">Добавить продукт</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action={% url 'add' %} method="post" enctype="multipart/form-data">
+                            {% include "form.html" %}
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                        <button type="button" class="btn btn-primary" id="add-button">Добавить</button>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <a href="/add"> <button type="button" class="btn btn-primary">Добавить</button></a>
-
     </div>
 
 {% endblock content %}
